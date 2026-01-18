@@ -52,4 +52,61 @@
             font-weight: 600;
             font-size: 16px;
             transition: transform 0.2s, background 0.2s;
-            box-shadow: 0 4px 12px rgba(115, 96, 242, 0.3
+            box-shadow: 0 4px 12px rgba(115, 96, 242, 0.3);
+        }
+
+        .viber-btn:hover {
+            background-color: #5e4db2;
+            transform: translateY(-2px);
+        }
+
+        /* Stil za WhatsApp dugme (dodato kao sigurnija opcija) */
+        .wa-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25d366;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .wa-btn:hover {
+            background-color: #1ebd5e;
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Kontaktirajte nas</h2>
+        <p>Odaberite aplikaciju za slanje upita o pozivnicama:</p>
+
+        <a href="viber://chat?number=%2B38766360562&draft=Pozdrav!%20Interesuje%20me%20pozivnica" class="viber-btn">
+            Pošalji upit na Viber
+        </a>
+
+        <a href="https://wa.me/38766360562?text=Pozdrav!%20Interesuje%20me%20pozivnica" class="wa-btn" target="_blank">
+            Pošalji upit na WhatsApp
+        </a>
+
+        <div class="footer-note">
+            * Ukoliko Viber prijavi grešku, dodajte broj +387 66 360 562 u imenik pa osvežite stranicu.
+        </div>
+    </div>
+
+</body>
+</html>
