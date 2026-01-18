@@ -1,37 +1,106 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viber Test</title>
+    <title>Kontakt - Pozivnice</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        .viber-button {
-            display: inline-block;
-            background-color: #7360f2; /* Viber ljubičasta */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        /* Stil za Viber Dugme */
+        .viber-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #7360f2;
             color: white;
-            padding: 15px 25px;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            transition: background 0.3s;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(115, 96, 242, 0.4);
         }
-        .viber-button:hover {
+
+        .viber-btn:hover {
             background-color: #5e4db2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(115, 96, 242, 0.6);
+        }
+
+        .viber-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Ikonica (opciono, koristi tekst ako nemaš sliku) */
+        .viber-btn i {
+            margin-right: 10px;
+        }
+
+        p {
+            font-size: 12px;
+            color: #888;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Testiranje Viber kontakta</h1>
-    
-    <a href="viber://chat?number=%2B38765328104draft=Pozdrav!%20Interesuje%20me%20pozivnica" class="viber-button">
-        Pošalji poruku na Viber
-    </a>
+    <div class="container">
+        <h2>Rezervišite svoje pozivnice</h2>
+        
+        <button onclick="pokreniKomunikaciju()" class="viber-btn">
+            Pošalji upit na Viber
+        </button>
 
-    <p style="margin-top: 20px; color: #666;">
-        * Napomena: Testiraj ovo prvenstveno na mobilnom telefonu gdje je Viber instaliran.
-    </p>
+        <p>* Automatski otvara Viber i priprema poruku</p>
+    </div>
+
+    <script>
+        function pokreniKomunikaciju() {
+            // Tvoji podaci
+            const mojBroj = "38765328104";
+            const poruka = "Pozdrav! Interesuje me pozivnica";
+            
+            // Enkodiranje poruke za URL format
+            const enkodiranaPoruka = encodeURIComponent(poruka);
+
+            // 1. KORAK: Dodavanje kontakta (rešava problem "User not found")
+            window.location.href = "viber://add?number=" + mojBroj;
+
+            // 2. KORAK: Mala pauza (1.5 sekundu) pa otvaranje četa sa tekstom
+            setTimeout(function() {
+                // Koristimo %2B umesto + za internacionalni format
+                window.location.href = "viber://chat?number=%2B" + mojBroj + "&draft=" + enkodiranaPoruka;
+            }, 1500);
+        }
+    </script>
 
 </body>
 </html>
